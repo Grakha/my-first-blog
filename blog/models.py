@@ -2,6 +2,14 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
+'''
+    You have to run python manage.py syncdb (or python manage.py migrate if you use south - which you should)
+    in order for changes to be applied to the database.
+    https://stackoverflow.com/questions/22427388/django-db-utils-operationalerror-my-table-has-no-column-id-error
+    1) python manage.py makemigrations  - alias = pmake
+    2) python manage.py migrate  - alias = pmigrate
+'''
+
 # Created Model Post
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
