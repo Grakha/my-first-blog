@@ -20,12 +20,13 @@ def post_detail(request, pk):
 
 # Post Form view which is changing forms in panel admin
 def post_new(request):
+    post = Post
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
+            post.created_date = post.created_date
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
@@ -41,9 +42,31 @@ def post_edit(request, pk):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published = timezone.now()
+            post.created_date = post.created_date
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
+# view for displays only published blog posts
+def post_draft_list(request):
+    posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
+    return render(request, 'blog/post_draft_list.html', {'posts': posts})
+
+# blog post detail page that will publish the post
+def post_publish(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.publish()
+    return redirect('post_detail', pk=pk)
+
+# remove blog post
+def post_remove(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('post_list')
+
+# cancel changes in blog post
+def post_cancel(request):
+    return redirect(request, 'post_edit')
