@@ -1,9 +1,11 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.utils import timezone
 from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
+from django.urls import reverse
 
 
 # Added Post List view
@@ -26,7 +28,6 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.created_date = post.created_date
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
@@ -42,7 +43,6 @@ def post_edit(request, pk):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.created_date = post.created_date
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
@@ -65,8 +65,8 @@ def post_publish(request, pk):
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
-    return redirect('post_list')
+    return redirect('post_draft_list')
 
 # cancel changes in blog post
 def post_cancel(request):
-    return redirect(request, 'post_edit')
+    return redirect('post_cancel')
