@@ -5,7 +5,7 @@ from django.utils import timezone
 from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
-from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 
 # Added Post List view
@@ -21,6 +21,7 @@ def post_detail(request, pk):
 
 
 # Post Form view which is changing forms in panel admin
+@login_required
 def post_new(request):
     post = Post
     if request.method == "POST":
@@ -36,6 +37,7 @@ def post_new(request):
 
 
 # view for Edit New Post on Blog page and redirect to Page Detail
+@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -51,22 +53,26 @@ def post_edit(request, pk):
 
 
 # view for displays only published blog posts
+@login_required
 def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
 
 # blog post detail page that will publish the post
+@login_required
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
     return redirect('post_detail', pk=pk)
 
 # remove blog post
+@login_required
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('post_draft_list')
 
 # cancel changes in blog post
-def post_cancel(request):
-    return redirect('post_cancel')
+def post_cancel(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return redirect('post_list')
