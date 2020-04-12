@@ -10,7 +10,7 @@
                 </a>
                 <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
                     <span class="glyphicon glyphicon-pencil"></span>
-                </a>thora
+                </a>
             {% else %}
                 <a href="{% url 'post_publish' pk=post.pk %}" class="btn btn-default">Publish</a>
                 <a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-default">

@@ -58,6 +58,7 @@ def post_draft_list(request):
     posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
 
+
 # blog post detail page that will publish the post
 @login_required
 def post_publish(request, pk):
@@ -65,12 +66,14 @@ def post_publish(request, pk):
     post.publish()
     return redirect('post_detail', pk=pk)
 
+
 # remove blog post
 @login_required
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('post_draft_list')
+
 
 # cancel changes in blog post
 def post_cancel(request, pk):
