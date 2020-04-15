@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Comment
 from django.contrib.admin import widgets
 
 
@@ -54,3 +54,10 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'text', )
         widgets = {'created_date': DateInput()}
 """
+
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ('author', 'text',)
