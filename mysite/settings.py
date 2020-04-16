@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import dj_database_url
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +27,7 @@ SECRET_KEY = 'u9k!x_88@o7y5nkm26b)7=+k%$8x1jv_=f19%e91b$94-9a5#^'
 DEBUG = False
 
 #ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
-ALLOWED_HOSTS = ['127.0.0.1', 'giobee.herokuapp.com']
+ALLOWED_HOSTS = ['giobee.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -136,3 +136,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/'
+
+django_heroku.settings(locals())
