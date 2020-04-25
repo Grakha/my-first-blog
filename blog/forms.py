@@ -1,7 +1,7 @@
 from django import forms
 from .models import Post, Comment
 from django.contrib.admin import widgets
-
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 #class DateInput(forms.DateInput):
     #input_type = 'date'
@@ -12,6 +12,7 @@ from django.contrib.admin import widgets
 
 
 class PostForm(forms.ModelForm):
+    text = forms.CharField(widget=SummernoteWidget())
     #created_date = forms.DateField(widget=DateInput(attrs={'class': 'date_created'}))
     #publish_time = forms.TimeField(widget=TimeInput(attrs={'type': 'time'}))
     #fromHour = forms.TimeField(input_format='%I:%M %p', widget=TimePickerWidget(format='%I:%M %p'))
@@ -57,6 +58,7 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
+    text = forms.CharField(widget=SummernoteWidget())
 
     class Meta:
         model = Comment
