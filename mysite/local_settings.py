@@ -1,5 +1,6 @@
 import os
 from .settings import *
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DATABASES = {
