@@ -9,18 +9,22 @@ from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 #class TimeInput(forms.TimeInput):
     #publish_time = 'time'
-
+class CheckboxInput(forms.CheckboxInput):
+    input_type = 'checkbox'
 
 class PostForm(forms.ModelForm):
+    checkbox = forms.BooleanField(widget=CheckboxInput(attrs={'class': 'checkbox'}), required=False)
     text = forms.CharField(widget=SummernoteWidget())
+    #input_type = forms.BooleanField(widget=CheckboxInput(), required=False)
     #created_date = forms.DateField(widget=DateInput(attrs={'class': 'date_created'}))
     #publish_time = forms.TimeField(widget=TimeInput(attrs={'type': 'time'}))
     #fromHour = forms.TimeField(input_format='%I:%M %p', widget=TimePickerWidget(format='%I:%M %p'))
 
     class Meta:
         model = Post
-        fields = ('title', 'text',)
+        fields = ('title', 'text', )
         #widgets = {
+            #'checkbox_datetime': CheckboxInput(),
             #'created_date': DateInput(),
             #'publish_time': TimeInput()
         #}

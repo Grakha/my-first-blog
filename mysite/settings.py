@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import django_heroku
-import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,12 +24,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u9k!x_88@o7y5nkm26b)7=+k%$8x1jv_=f19%e91b$94-9a5#^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-"""if socket.gethostname() == "server_name":
-    DEBUG = False
-    ALLOWED_HOSTS = ['127.0.0.1', 'giobee.herokuapp.com', '.pythonanywhere.com']
-else:
-    DEBUG = True
-    ALLOWED_HOSTS = ['*']"""
 
 DEBUG = True
 
@@ -151,3 +144,10 @@ LOGIN_REDIRECT_URL = '/'
 django_heroku.settings(locals())
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("local_settings is not imported.")
+
