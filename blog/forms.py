@@ -1,7 +1,7 @@
 from django import forms
 from .models import Post, Comment
 from django.contrib.admin import widgets
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+from django_summernote.widgets import SummernoteWidget
 
 #class DateInput(forms.DateInput):
     #input_type = 'date'
@@ -14,7 +14,7 @@ class CheckboxInput(forms.CheckboxInput):
 
 class PostForm(forms.ModelForm):
     checkbox = forms.BooleanField(widget=CheckboxInput(attrs={'class': 'checkbox'}), required=False)
-    text = forms.CharField(widget=SummernoteWidget())
+    text = forms.CharField(widget=SummernoteWidget(attrs={'summernote': {'width': '800px', 'height': '400px'}}))
     #input_type = forms.BooleanField(widget=CheckboxInput(), required=False)
     #created_date = forms.DateField(widget=DateInput(attrs={'class': 'date_created'}))
     #publish_time = forms.TimeField(widget=TimeInput(attrs={'type': 'time'}))
@@ -62,8 +62,8 @@ class PostForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    text = forms.CharField(widget=SummernoteWidget())
+    #text = forms.CharField(widget=SummernoteWidget())
 
     class Meta:
         model = Comment
-        fields = ('author', 'text',)
+        fields = ('author', 'text', )

@@ -145,9 +145,9 @@ LOGIN_REDIRECT_URL = '/'
 django_heroku.settings(locals())
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-"""
+
 try:
     from .local_settings import *
 except ImportError:
-    print("local_settings is not imported.")"""
+    print("local_settings is not imported.")
 
