@@ -12,7 +12,7 @@ class CheckboxInput(forms.CheckboxInput):
     input_type = 'checkbox'
 
 class PostForm(forms.ModelForm):
-    checkbox = forms.BooleanField(widget=CheckboxInput(attrs={'class': 'checkbox'}), required=False)
+    #checkbox = forms.BooleanField(widget=CheckboxInput(attrs={'class': 'checkbox'}), required=False)
     #input_type = forms.BooleanField(widget=CheckboxInput(), required=False)
     #created_date = forms.DateField(widget=DateInput(attrs={'class': 'date_created'}))
     #publish_time = forms.TimeField(widget=TimeInput(attrs={'type': 'time'}))

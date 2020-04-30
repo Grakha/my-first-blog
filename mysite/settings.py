@@ -30,7 +30,9 @@ DEBUG = True
 
 #ALLOWED_HOSTS = ['*']
 #ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
-ALLOWED_HOSTS = ['127.0.0.1', 'giobee.herokuapp.com', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'giobee.herokuapp.com', 'giobee.pythonanywhere.com']
+if ALLOWED_HOSTS[0] == '127.0.0.1' or ALLOWED_HOSTS[1] == 'giobee.herokuapp.com':
+    import django_heroku
 
 # Application definition
 INSTALLED_APPS = [
@@ -145,8 +147,9 @@ django_heroku.settings(locals())
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+"""
 try:
     from .local_settings import *
 except ImportError:
-    raise Exception("A local_settings.py file is required to run this project")
+    raise Exception("A local_settings.py file is required to run this project")"""
 
