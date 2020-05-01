@@ -22,7 +22,7 @@
             {% endif %}
         {% endif %}
         <h1>{{ post.title }}</h1>
-        <p>{{ post.text }}</p>
+        <p>{{ post.text|safe }}</p>
     </div>
     <hr>
     {% for comment in post.comments.all %}
@@ -36,7 +36,7 @@
           {% endif %}
         </div>
         <strong>{{ comment.author }}</strong>
-        <p>{{ comment.text }}</p>
+        <p>{{ comment.text|safe }}</p>
       </div>
       {% endif %}
     {% empty %}

@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import django_heroku
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,8 +30,8 @@ DEBUG = True
 #ALLOWED_HOSTS = ['*']
 #ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 ALLOWED_HOSTS = ['127.0.0.1', 'giobee.herokuapp.com', 'giobee.pythonanywhere.com']
-if ALLOWED_HOSTS[0] == '127.0.0.1' or ALLOWED_HOSTS[1] == 'giobee.herokuapp.com':
-    import django_heroku
+#if ALLOWED_HOSTS[0] == '127.0.0.1' or ALLOWED_HOSTS[1] == 'giobee.herokuapp.com':
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -44,8 +43,21 @@ INSTALLED_APPS = [
     'livereload',
     'django.contrib.staticfiles',
     'blog',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {},
+    'comment': {
+        'toolbar': 'Comment',
+        'toolbar_Comment': [
+            ['Smiley'],
+        ],
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.common.BrokenLinkEmailsMiddleware',
@@ -147,9 +159,9 @@ django_heroku.settings(locals())
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+
 """
 try:
     from .local_settings import *
 except ImportError:
     raise Exception("A local_settings.py file is required to run this project")"""
-

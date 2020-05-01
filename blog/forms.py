@@ -1,15 +1,15 @@
 from django import forms
 from .models import Post, Comment
-from django.contrib.admin import widgets
 
+#from django.contrib.admin import widgets
 #class DateInput(forms.DateInput):
     #input_type = 'date'
 
 
 #class TimeInput(forms.TimeInput):
     #publish_time = 'time'
-class CheckboxInput(forms.CheckboxInput):
-    input_type = 'checkbox'
+#class CheckboxInput(forms.CheckboxInput):
+    #input_type = 'checkbox'
 
 class PostForm(forms.ModelForm):
     #checkbox = forms.BooleanField(widget=CheckboxInput(attrs={'class': 'checkbox'}), required=False)

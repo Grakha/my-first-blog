@@ -3,6 +3,7 @@ from .models import Post, Comment
 
 # Register your models here.
 
+
 # Registering Post model
 admin.site.register(Post)
 
