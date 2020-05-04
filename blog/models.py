@@ -16,10 +16,11 @@ from django.utils import timezone
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    #text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
-    #checkbox_datetime = models.BooleanField('Checkbox', default=False)
+    published_time = models.TimeField(blank=True, null=True)
+    published_date = models.DateField(blank=True, null=True)
+    #published_date = models.DateTimeField(blank=True, null=True)
+    checkbox_datetime = models.BooleanField('Checkbox', default=False)
     text = RichTextUploadingField(blank=True, null=True)
 
     def publish(self):
@@ -39,7 +40,6 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=200)
-    #text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)
     text = RichTextUploadingField(blank=True, null=True, config_name='comment')

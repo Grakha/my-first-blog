@@ -4,6 +4,7 @@
     <h1>New comment</h1>
     <form method="POST" class="post-form">s
         {% csrf_token %}
+        {{ form.media }}
         {{ form.as_p }}
         <button class="save btn btn-success" type="submit">Send</button>
     </form>

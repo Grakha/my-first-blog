@@ -1,5 +1,6 @@
 from django import forms
 from .models import Post, Comment
+from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput
 
 #from django.contrib.admin import widgets
 #class DateInput(forms.DateInput):
@@ -20,12 +21,14 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ('title', 'text', )
-        #widgets = {
+        fields = ['title', 'text', 'checkbox_datetime', 'published_date', 'published_time']
+        widgets = {
+            'published_date': DatePickerInput(format='%d/%m/%Y'),
+            'published_time': TimePickerInput(format='%H:%M'),
             #'checkbox_datetime': CheckboxInput(),
-            #'created_date': DateInput(),
             #'publish_time': TimeInput()
-        #}
+            #'created_date': DateInput(),
+        }
 
 """
 class DateInput(forms.DateInput):

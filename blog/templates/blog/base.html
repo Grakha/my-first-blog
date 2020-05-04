@@ -1,3 +1,6 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -7,8 +10,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Django for it</title>
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">-->
   <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
@@ -31,5 +34,8 @@
       </div>
     </div>
   </div>
+  <!--<script type="text/javascript" src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
+  <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

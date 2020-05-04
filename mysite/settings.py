@@ -32,7 +32,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', 'giobee.herokuapp.com', 'giobee.pythonanywhere.com']
 #if ALLOWED_HOSTS[0] == '127.0.0.1' or ALLOWED_HOSTS[1] == 'giobee.herokuapp.com':
 
-
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -45,6 +44,8 @@ INSTALLED_APPS = [
     'blog',
     'ckeditor',
     'ckeditor_uploader',
+    'bootstrap3',
+    'bootstrap_datepicker_plus',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
@@ -57,6 +58,10 @@ CKEDITOR_CONFIGS = {
             ['Smiley'],
         ],
     }
+}
+
+BOOTSTRAP3 = {
+    'include_jquery': True,
 }
 
 MIDDLEWARE = [
