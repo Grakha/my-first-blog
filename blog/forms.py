@@ -1,6 +1,6 @@
 from django import forms
 from .models import Post, Comment
-from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput
+from bootstrap_datepicker_plus import DateTimePickerInput
 
 #from django.contrib.admin import widgets
 #class DateInput(forms.DateInput):
@@ -11,6 +11,7 @@ from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput
     #publish_time = 'time'
 #class CheckboxInput(forms.CheckboxInput):
     #input_type = 'checkbox'
+TIME_FORMAT = '%I:%M %p'
 
 class PostForm(forms.ModelForm):
     #checkbox = forms.BooleanField(widget=CheckboxInput(attrs={'class': 'checkbox'}), required=False)
@@ -18,13 +19,14 @@ class PostForm(forms.ModelForm):
     #created_date = forms.DateField(widget=DateInput(attrs={'class': 'date_created'}))
     #publish_time = forms.TimeField(widget=TimeInput(attrs={'type': 'time'}))
     #fromHour = forms.TimeField(input_format='%I:%M %p', widget=TimePickerWidget(format='%I:%M %p'))
+    #published_time = forms.TimeField(input_formats=[TIME_FORMAT], widget=TimePickerInput(format=TIME_FORMAT))
+    #published_date = forms.DateField(widget=DatePickerInput(format='%d/%m/%Y'))
 
     class Meta:
         model = Post
-        fields = ['title', 'text', 'checkbox_datetime', 'published_date', 'published_time']
+        fields = ('title', 'text', 'checkbox_datetime', 'published_datetime', )
         widgets = {
-            'published_date': DatePickerInput(format='%d/%m/%Y'),
-            'published_time': TimePickerInput(format='%H:%M'),
+            'published_datetime': DateTimePickerInput(),
             #'checkbox_datetime': CheckboxInput(),
             #'publish_time': TimeInput()
             #'created_date': DateInput(),

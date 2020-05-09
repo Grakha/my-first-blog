@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 # Added Post List view
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post.objects.filter(published_datetime__lte=timezone.now()).order_by('published_datetime')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 
@@ -55,7 +55,7 @@ def post_edit(request, pk):
 # view for displays only published blog posts
 @login_required
 def post_draft_list(request):
-    posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
+    posts = Post.objects.filter(published_datetime__isnull=True).order_by('created_date')
     return render(request, 'blog/post_draft_list.html', {'posts': posts})
 
 
@@ -72,7 +72,7 @@ def post_publish(request, pk):
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
-    return redirect('post_draft_list')
+    return redirect('post_list')
 
 
 # cancel changes in blog post

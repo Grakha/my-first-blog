@@ -3,8 +3,8 @@
 {% block content %}
     <div class="post">
         {% if user.is_authenticated %}
-            {% if post.published_date %}
-                <div class="date">{{ post.published_date }}</div>
+            {% if post.published_datetime %}
+                <div class="date">{{ post.published_datetime }}</div>
                 <a href="{% url 'post_remove' pk=post.pk %}" class="btn btn-default">
                     <span class="glyphicon glyphicon-remove"></span>
                 </a>
@@ -21,7 +21,7 @@
                 </a>
             {% endif %}
         {% endif %}
-        <h1>{{ post.title }}</h1>
+        <h1>{{ post.title}}</h1>
         <p>{{ post.text|safe }}</p>
     </div>
     <hr>

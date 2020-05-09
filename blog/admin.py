@@ -7,6 +7,5 @@ from .models import Post, Comment
 # Registering Post model
 admin.site.register(Post)
 
-
 # Registering Comment model
 admin.site.register(Comment)

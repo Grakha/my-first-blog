@@ -50,6 +50,11 @@ INSTALLED_APPS = [
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+#'enterMode': 1,
+#ENTER_P    = 1 # default
+#ENTER_BR   = 2
+#ENTER_DIV  = 3
+
 CKEDITOR_CONFIGS = {
     'default': {},
     'comment': {
@@ -59,6 +64,7 @@ CKEDITOR_CONFIGS = {
         ],
     }
 }
+
 
 BOOTSTRAP3 = {
     'include_jquery': True,
