@@ -3,17 +3,14 @@ from .models import Post, Comment
 from bootstrap_datepicker_plus import DateTimePickerInput
 
 
-
 class PostForm(forms.ModelForm):
-    #checkbox = forms.BooleanField(widget=CheckboxInput(attrs={'class': 'checkbox'}), required=False)
-    #input_type = forms.BooleanField(widget=CheckboxInput(), required=False)
+    checkbox_datetime = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'some'}), required=False)
 
     class Meta:
         model = Post
-        fields = ('title', 'text', 'checkbox_datetime', 'published_datetime', )
+        fields = ('title', 'text', 'published_datetime', 'checkbox_datetime', )
         widgets = {
             'published_datetime': DateTimePickerInput(),
-            #'checkbox_datetime': CheckboxInput(),
         }
 
 

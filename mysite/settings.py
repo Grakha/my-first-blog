@@ -28,9 +28,7 @@ SECRET_KEY = 'u9k!x_88@o7y5nkm26b)7=+k%$8x1jv_=f19%e91b$94-9a5#^'
 DEBUG = True
 
 #ALLOWED_HOSTS = ['*']
-#ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 ALLOWED_HOSTS = ['127.0.0.1', 'giobee.herokuapp.com', 'giobee.pythonanywhere.com']
-#if ALLOWED_HOSTS[0] == '127.0.0.1' or ALLOWED_HOSTS[1] == 'giobee.herokuapp.com':
 
 # Application definition
 INSTALLED_APPS = [
@@ -46,17 +44,25 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'bootstrap3',
     'bootstrap_datepicker_plus',
+    'django_cleanup',
 ]
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
-#'enterMode': 1,
-#ENTER_P    = 1 # default
-#ENTER_BR   = 2
-#ENTER_DIV  = 3
-
 CKEDITOR_CONFIGS = {
-    'default': {},
+    'default': {
+        'toolbar': 'Post',
+        'toolbar_Post': [
+            ['Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo'],
+            ['Bold', 'Italic', 'Underline'],
+            ['Styles', 'Format', 'Font', 'FontSize'],
+            ['CopyFormatting', 'RemoveFormat'],
+            ['TextColor'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Source']
+        ]
+    },
     'comment': {
         'toolbar': 'Comment',
         'toolbar_Comment': [
